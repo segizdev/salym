@@ -1,5 +1,5 @@
-import { Landing } from "@/components/landing";
-import { MainLayout } from "@/components/mainLayout";
+import { Landing } from "@/components/Landing";
+import { MainLayout } from "@/components/MainLayout";
 import { ReactElement } from "react";
 
 export default function Home() {
