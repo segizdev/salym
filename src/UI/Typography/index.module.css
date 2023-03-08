@@ -1,0 +1,11 @@
+.p {
+  font-size: var(--font-base);
+}
+
+.h1 {
+  font-size: var(--font-xl);
+}
+
+.h2 {
+  font-size: var(--font-lg);
+}
