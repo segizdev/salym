@@ -1,16 +1,21 @@
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
+import { Roboto } from "next/font/google";
+import { Policy, withPolicies } from "@/lib/withPolicies";
 
 import "../index.css";
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
+type NextPageEnhanced = ReactElement & {
+  getLayout?: (
+    page: ReactElement,
+    pageProps: Record<string, any>
+  ) => ReactElement;
+  policies?: Policy[];
 };
-import { Roboto } from "next/font/google";
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
+  Component: NextPageEnhanced;
 };
 
 const roboto = Roboto({
@@ -21,9 +26,13 @@ const roboto = Roboto({
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
+  const policies = [...(Component.policies || [])];
+
   return (
     <main className={roboto.className}>
-      {getLayout(<Component {...pageProps} />)}
+      {withPolicies(policies)(
+        getLayout(<Component {...pageProps} />, pageProps)
+      )}
     </main>
   );
 }

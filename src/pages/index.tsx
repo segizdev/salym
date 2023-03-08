@@ -1,5 +1,5 @@
 import { Landing } from "@/components/Landing";
-import { MainLayout } from "@/components/MainLayout";
+import { LayoutAuth } from "@/components/LayoutAuth";
 import { ReactElement } from "react";
 
 export default function Home() {
@@ -7,5 +7,5 @@ export default function Home() {
 }
 
 Home.getLayout = (page: ReactElement) => {
-  return <MainLayout>{page}</MainLayout>;
+  return <LayoutAuth>{page}</LayoutAuth>;
 };

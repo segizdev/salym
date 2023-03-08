@@ -140,4 +140,5 @@ table {
   --font-large: 2rem;
 
   background-color: var(--bg-main);
+  color: var(--text-secondary);
 }

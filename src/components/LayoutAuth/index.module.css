@@ -1,0 +1,26 @@
+.main {
+  max-width: 64rem;
+  margin: auto;
+}
+
+.menu {
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.list {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  display: grid;
+  justify-content: center;
+  gap: 2rem 0;
+  margin-top: 4rem;
+  text-align: center;
+}
