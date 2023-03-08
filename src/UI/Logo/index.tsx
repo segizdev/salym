@@ -1,3 +1,3 @@
 export const Logo = () => {
-  <div>Salym</div>;
+  return <div>Salym</div>;
 };

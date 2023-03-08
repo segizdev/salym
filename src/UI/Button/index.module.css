@@ -1,0 +1,19 @@
+.button {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--text-secondary);
+}
+
+.primary {
+  background-color: var(--bg-primary);
+}
+
+.secondary {
+  background-color: var(--bg-primary);
+}
+
+.transparent {
+  background-color: transparent;
+  color: var(--text-main);
+}

@@ -1,0 +1,26 @@
+.menu {
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.list {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  color: var(--text-secondary);
+  display: grid;
+  justify-content: center;
+  gap: 2rem 0;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.heading {
+  font-size: var(--font-large);
+}

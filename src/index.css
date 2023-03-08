@@ -124,10 +124,20 @@ table {
 }
 
 :root {
+  /* BACKGROUND */
+
   --bg-main: #000;
+  --bg-primary: #219ebc;
+  --bg-secondary: #ffb703;
+
+  /* TEXT COLOR */
+
+  --text-main: #000;
+  --text-secondary: #fff;
+
+  /* FONT SIZE */
+
+  --font-large: 2rem;
 
   background-color: var(--bg-main);
-  width: 100%;
-  display: flex;
-  justify-content: center;
 }

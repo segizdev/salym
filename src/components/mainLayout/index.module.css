@@ -1,8 +1,4 @@
 .main {
-  max-width: 1024px;
-  background-color: red;
-}
-
-.content {
-  width: 100%;
+  max-width: 64rem;
+  margin: auto;
 }
