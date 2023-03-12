@@ -8,6 +8,7 @@ type Props = {
 };
 
 function PolicyAuthedInner({ children }: Props) {
+ 
   const isProfileCurrentReady = true;
   const isAuthenticated = false;
 
@@ -19,9 +20,12 @@ function PolicyAuthedInner({ children }: Props) {
   useEffect(() => {
     if (!isAuthenticated) {
       router.push(to.login);
-    } else {
+    } if (isAuthenticated) {
+      router.push(to.register);
+    }  else {
       setIsReadyToRender(true);
     }
+
   }, [isAuthenticated, isProfileCurrentReady, router]);
 
   if (!isReadyToRender) return null;
