@@ -8,7 +8,6 @@ type Props = {
 };
 
 function PolicyAuthedInner({ children }: Props) {
- 
   const isProfileCurrentReady = true;
   const isAuthenticated = false;
 
@@ -25,7 +24,9 @@ function PolicyAuthedInner({ children }: Props) {
     }  else {
       setIsReadyToRender(true);
     }
-
+    } else {
+      setIsReadyToRender(true);
+    }
   }, [isAuthenticated, isProfileCurrentReady, router]);
 
   if (!isReadyToRender) return null;

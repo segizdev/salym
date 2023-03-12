@@ -2,6 +2,7 @@
   background-color: #00dbde;
   background-image: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
   min-height: 100vh;
+  height: 100vh;
 }
 
 .main {
@@ -27,7 +28,6 @@
   display: flex;
   gap: 1rem;
 }
-
 .content {
   display: grid;
   justify-content: center;

@@ -29,6 +29,10 @@ export const LayoutAuth = ({ children }: Props) => {
               <Link href={to.register}>
                 <Button variant="primary">Sign up</Button>
               </Link>
+            <NavigationMenu.Item>
+              <Link href={to.login}>
+                <Button variant="primary">Log in</Button>
+              </Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>
         </NavigationMenu.Root>
