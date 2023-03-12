@@ -1,7 +1,13 @@
+import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import axios from 'axios';
+import Link from "next/link";
+import  { IoEyeOffOutline,IoEyeOutline } from 'react-icons/io5'
 
+import { to } from "@/lib/to";
 import classes from "./index.module.css";
+import { Button } from "@/UI/Button";
+import { Form } from "@/helpers/form"
 
 type FormValues = {
   firstName: string;
@@ -10,6 +16,8 @@ type FormValues = {
 };
 
 export const Register = () => {
+  const isActive = false
+  const [active, setActive] = useState<boolean>(isActive);
   const {
     formState,
     reset,
@@ -38,11 +46,37 @@ export const Register = () => {
 
   return <div className={classes.login}>
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-      <input type="text" {...register("firstName")} />
-      <input type="email" {...register("email")} />
-      <input type="password" {...register("password")} />
-
-      <input type="submit" />
+      <input 
+        className={classes.form_input} 
+        type="text" {...register("firstName", Form.Options.settings)}
+         placeholder="Enter username..."         
+      />
+      {
+        formState.errors.firstName && <span className={classes.input_error}> {formState.errors.firstName.message} </span>
+      }
+      <input className={classes.form_input} type="email" {...register("email", Form.Options.email)} placeholder="Enter email..." />
+      {
+        formState.errors.email && <span className={classes.input_error}> {formState.errors.email.message} </span>
+      }
+      <div className={classes.form_input_password}>
+      <input className={classes.form_input} type={active === false ? 'password' : 'text'} {...register("password", Form.Options.password)} placeholder="Enter password..." />
+      {
+          active === false ?
+          <IoEyeOffOutline
+            className={classes.input_eye}
+            onClick={() => setActive(true)}
+          />
+          :
+          <IoEyeOutline
+            className={classes.input_eye}
+            onClick={() => setActive(false)}
+          />
+        }
+      </div>
+      {
+        formState.errors.password && <span className={classes.input_error}> {formState.errors.password.message} </span>
+      }
+        <Button variant="primary">Send</Button>
     </form>
   </div>;
 };
