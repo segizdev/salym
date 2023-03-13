@@ -1,0 +1,37 @@
+.login {
+    border-radius: 10px;
+    box-shadow: solid 10px gray;
+    background-image: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+    display: flex;
+    padding: 2rem;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form_input {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+}
+
+.form_input_password {
+    position: relative;
+  }
+
+.input_eye {
+    position: absolute;
+    font-size: 1rem;
+    top: 0.4rem;
+    right: 0.5rem;
+    color: black;
+  }
+  
+  .input_error {
+    color: blue;
+    font-size: 0.8rem;
+  
+  }

@@ -1,8 +1,9 @@
+import { Register } from "@/components/Register";
 import { LayoutAuth } from "@/components/LayoutAuth";
 import { ReactElement } from "react";
 
 export default function PageRegister() {
-  return <div>Register</div>;
+  return <Register />;
 }
 
 PageRegister.getLayout = (page: ReactElement) => {
