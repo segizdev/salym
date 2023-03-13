@@ -1,0 +1,55 @@
+.wrapper {
+  background-color: #00dbde;
+  background-image: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+  height: 100vh;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.main {
+  width: 20rem;
+  position: absolute;
+  top: 10;
+  right: 0;
+  height: 100%;
+  z-index: 2;
+}
+
+.menu {
+  background-color: var(--bg-dark-blue);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  height: 100%;
+  transform: translateX(0);
+  transition: all 0.5s ease-in-out;
+}
+
+.list {
+  /* display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center; */
+}
+
+.content {
+  display: grid;
+}
+
+.userBlock {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--bg-primary);
+}
+
+.buttonWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.open {
+  transform: translateX(20rem);
+  transition: all 0.5s ease-in-out;
+}

@@ -1,13 +1,12 @@
 import clsx from "clsx";
-import { ReactElement } from "react";
 import classes from "./index.module.css";
 
 type TagNameMap = "p" | "h1" | "h2";
 
 type Props = {
-  variant: TagNameMap;
-  color: "basic";
-  children: ReactElement;
+  variant?: TagNameMap;
+  color?: "basic";
+  children: string;
 };
 
 export const Typography = ({ variant, color, children }: Props) => {

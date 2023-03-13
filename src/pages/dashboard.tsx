@@ -1,7 +1,7 @@
-import { LayoutAuth } from "@/components/LayoutAuth";
 import { ReactElement } from "react";
 import { Dashboard } from "@/components/Dashboard";
 import { PolicyAuthed } from "@/lib/policy/authed";
+import { LayoutMain } from "@/components/LayoutMain";
 
 export default function PageDashboard() {
   return <Dashboard />;
@@ -10,5 +10,5 @@ export default function PageDashboard() {
 PageDashboard.policies = [PolicyAuthed];
 
 PageDashboard.getLayout = (page: ReactElement) => {
-  return <LayoutAuth>{page}</LayoutAuth>;
+  return <LayoutMain>{page}</LayoutMain>;
 };

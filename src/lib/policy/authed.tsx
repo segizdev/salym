@@ -8,8 +8,10 @@ type Props = {
 };
 
 function PolicyAuthedInner({ children }: Props) {
+  // TODO: update with real data
+
   const isProfileCurrentReady = true;
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   const [isReadyToRender, setIsReadyToRender] =
     useState<boolean>(isAuthenticated);
