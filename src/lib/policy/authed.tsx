@@ -8,7 +8,6 @@ type Props = {
 };
 
 function PolicyAuthedInner({ children }: Props) {
- 
   const isProfileCurrentReady = true;
   const isAuthenticated = false;
 

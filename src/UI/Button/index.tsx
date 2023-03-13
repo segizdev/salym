@@ -1,5 +1,4 @@
 import clsx from "clsx";
-
 import classes from "./index.module.css";
 
 type Props = {
