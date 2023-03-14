@@ -19,9 +19,7 @@ function PolicyAuthedInner({ children }: Props) {
   useEffect(() => {
     if (!isAuthenticated) {
       router.push(to.login);
-    } if (isAuthenticated) {
-      router.push(to.register);
-    }  else {
+    } else {
       setIsReadyToRender(true);
     }
 

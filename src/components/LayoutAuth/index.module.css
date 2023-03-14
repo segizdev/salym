@@ -23,16 +23,10 @@
   align-items: center;
 }
 
-.links {
-  display: flex;
-  gap: 1rem;
-}
-
 .content {
   display: grid;
   justify-content: center;
   gap: 2rem 0;
   margin-top: 4rem;
   text-align: center;
-  min-width: 31,25rem;
 }

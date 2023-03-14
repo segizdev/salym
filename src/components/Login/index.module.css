@@ -1,21 +1,14 @@
-.login {
+
+.form {
     border-radius: 10px;
     box-shadow: solid 10px gray;
     background-image: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
     display: flex;
     padding: 2rem;
-}
-.form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
-
-.form_input {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
 }
 
 .form_input_password {
@@ -25,13 +18,45 @@
 .input_eye {
     position: absolute;
     font-size: 1rem;
-    top: 0.4rem;
+    top: 1.8rem;
     right: 0.5rem;
     color: black;
   }
-  
-  .input_error {
-    color: blue;
-    font-size: 0.8rem;
-  
+
+  .form_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.1rem solid white;
+    height: 5rem;
+  }
+
+  .form_link {
+    text-decoration: none;
+    font-weight:900;
+    color: rgb(24, 88, 224);
+  }
+
+  .form_link:hover {
+    color: rgb(33, 54, 146);
+  }
+
+  .social_account {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-bottom: 0.1rem solid white;
+    height: 6rem;
+  }
+
+  .social_account_title {
+    font-size: 1.4rem;
+  }
+
+  .social_account_google {
+    text-decoration: none;
+    padding: 0.5rem;
+    background: white;
+    font-weight: bold;
+    border-radius: 0.3rem;
   }

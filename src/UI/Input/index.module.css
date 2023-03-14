@@ -1,0 +1,14 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.form_label {
+  text-align: start;
+}
+.form_input {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+}

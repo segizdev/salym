@@ -1,82 +1,80 @@
-import { useState } from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import axios from 'axios';
+import React, { ChangeEvent, useState } from "react";
 import Link from "next/link";
-import  { IoEyeOffOutline,IoEyeOutline } from 'react-icons/io5'
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 import { to } from "@/lib/to";
 import classes from "./index.module.css";
 import { Button } from "@/UI/Button";
-import { Form } from "@/helpers/form"
+import { Input } from "@/UI/Input";
 
 type FormValues = {
-  firstName: string;
+  username: string;
   password: string;
   email: string;
 };
 
 export const Register = () => {
-  const isActive = false
+  const isActive = false;
   const [active, setActive] = useState<boolean>(isActive);
-  const {
-    formState,
-    reset,
-    register,
-    handleSubmit,
-  } = useForm<FormValues>()
+ const [inputs, setInputs] = useState({});
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    const body = {
-      firstName: data.firstName,
-      email: data.email,
-      password: data.password,
-    }
-  
-    axios
-      .post("", body)
-      .then((res) => {
-        console.log(res.data);
-        localStorage.setItem("token", JSON.stringify(res.data.token));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  const handleSubmit: SubmitHandler<FormValues> = (event) => {
+    event.preventDefault();
+    console.log(inputs);
+  };
 
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
 
-  return <div className={classes.login}>
-    <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-      <input 
-        className={classes.form_input} 
-        type="text" {...register("firstName", Form.Options.settings)}
-         placeholder="Enter username..."         
+  return (
+    <form onSubmit={handleSubmit} className={classes.form}>
+      <Input
+        type="text"
+        placeholder="Enter firstName..."
+        label="Name"
+        onChange={handleChange}
+        name="username"
+        value={inputs.username || ""}
       />
-      {
-        formState.errors.firstName && <span className={classes.input_error}> {formState.errors.firstName.message} </span>
-      }
-      <input className={classes.form_input} type="email" {...register("email", Form.Options.email)} placeholder="Enter email..." />
-      {
-        formState.errors.email && <span className={classes.input_error}> {formState.errors.email.message} </span>
-      }
+      <Input
+        type="email"
+        placeholder="Enter email..."
+        label="Email"
+        onChange={handleChange}
+        name="email"
+        value={inputs.email || ""}
+      />
       <div className={classes.form_input_password}>
-      <input className={classes.form_input} type={active === false ? 'password' : 'text'} {...register("password", Form.Options.password)} placeholder="Enter password..." />
-      {
-          active === false ?
+        <Input
+          type={active === false ? "password" : "text"}
+          placeholder="Enter password..."
+          label="Password"
+          onChange={handleChange}
+          name="password"
+          value={inputs.password || ""}
+        />
+        {active === false ? (
           <IoEyeOffOutline
             className={classes.input_eye}
             onClick={() => setActive(true)}
           />
-          :
+        ) : (
           <IoEyeOutline
             className={classes.input_eye}
             onClick={() => setActive(false)}
           />
-        }
+        )}
       </div>
-      {
-        formState.errors.password && <span className={classes.input_error}> {formState.errors.password.message} </span>
-      }
-        <Button variant="primary">Send</Button>
+        <Button variant="primary">
+          Registration
+        </Button>
+      <div>
+        <span>Already registered ?</span>
+        <Link href={to.login}>sign in</Link>
+      </div>
     </form>
-  </div>;
+  );
 };
