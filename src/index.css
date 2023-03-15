@@ -129,6 +129,7 @@ table {
   --bg-main: #000;
   --bg-primary: #219ebc;
   --bg-secondary: #ffb703;
+  --bg-dark-blue: #2b2d42;
 
   /* TEXT COLOR */
 
@@ -136,8 +137,11 @@ table {
   --text-secondary: #fff;
 
   /* FONT SIZE */
-
-  --font-large: 2rem;
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-base: 1rem;
+  --font-lg: 1.125;
+  --font-xl: 1.25rem;
 
   background-color: var(--bg-main);
   color: var(--text-secondary);
