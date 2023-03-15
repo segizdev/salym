@@ -18,6 +18,7 @@ export const LayoutMain = ({ children }: Props) => {
   const user = "Ulan";
 
   const [isMenuOpen, setIsMenuOopen] = useState<boolean>(true);
+  const [toggle, setToggle] = useState<boolean>(true);
 
   const toggleMenu = () => setIsMenuOopen((previous) => !previous);
 
@@ -31,9 +32,13 @@ export const LayoutMain = ({ children }: Props) => {
         </Button>
       </div>
 
-      <div className={classes.main}>
+      <div
+        className={clsx(classes.main, {
+          [classes.open]: isMenuOpen,
+        })}
+      >
         <NavigationMenu.Root
-          className={clsx(classes.menu, { [classes.open]: isMenuOpen })}
+          className={classes.menu}
           orientation="vertical"
         >
           <div className={classes.userBlock}>
@@ -48,6 +53,20 @@ export const LayoutMain = ({ children }: Props) => {
               alt="Colm Tuite"
             />
           </div>
+
+          {!toggle ? (
+            <button
+              className={classes.burgerOpen}
+              onClick={() => setToggle(true)}
+            >
+              <span className={classes.burgerOpen_line} />
+            </button>
+          ) : (
+            <button
+              className={classes.burgerClose}
+              onClick={() => setToggle(false)}
+            ></button>
+          )}
 
           <NavigationMenu.List className={classes.list}>
             <NavigationMenu.Item>
