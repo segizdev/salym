@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-// you need to remove this package
+// @TODO Delete this packages later
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 import { to } from "@/lib/to";
@@ -42,14 +42,14 @@ export const Login = () => {
       />
       <div className={classes.form_input_password}>
         <Input
-          type={active === false ? "password" : "text"}
+          type={!active ? "password" : "text"}
           placeholder="Enter password..."
           label="Password"
           onChange={handleChange}
           name="password"
           value={inputs.password || ""}
         />
-        {active === false ? (
+        {!active ? (
           <IoEyeOffOutline
             className={classes.input_eye}
             onClick={() => setActive(true)}
