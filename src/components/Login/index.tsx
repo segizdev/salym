@@ -50,6 +50,7 @@ export const Login = () => {
           onChange={handleChange}
           name="password"
           value={inputs.password || ""}
+          active={active}
           rightIcon={{icon1: <IoEyeOffOutline />, icon2: <IoEyeOutline />, click: handlerMouses }}
         />
       <div className={classes.form_buttons}>
