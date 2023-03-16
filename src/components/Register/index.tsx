@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, FormEvent, MouseEventHandler } from "react";
 import Link from "next/link";
 
 // @TODO Delete this packages later
@@ -10,26 +10,29 @@ import { Button } from "@/UI/Button";
 import { Input } from "@/UI/Input";
 
 type FormValues = {
-  username: string;
-  password: string;
-  email: string;
+  username?: string;
+  password?: string;
+  email?: string;
 };
 
 export const Register = () => {
-  const isActive = false;
-  const [active, setActive] = useState<boolean>(isActive);
- const [inputs, setInputs] = useState({});
+  const [active, setActive] = useState<boolean>(false);
+  const [inputs, setInputs] = useState<FormValues>({});
 
-  const handleSubmit: SubmitHandler<FormValues> = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(inputs);
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
+
+  const handlerMouses: MouseEventHandler<HTMLButtonElement> = () => {
+    setActive(!active)
+  }
 
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
@@ -49,7 +52,6 @@ export const Register = () => {
         name="email"
         value={inputs.email || ""}
       />
-      <div className={classes.form_input_password}>
         <Input
           type={!active ? "password" : "text"}
           placeholder="Enter password..."
@@ -57,19 +59,9 @@ export const Register = () => {
           onChange={handleChange}
           name="password"
           value={inputs.password || ""}
+          active={active}
+          rightIcon={{icon1: <IoEyeOffOutline />, icon2: <IoEyeOutline />, click: handlerMouses}}
         />
-        {!active ? (
-          <IoEyeOffOutline
-            className={classes.input_eye}
-            onClick={() => setActive(true)}
-          />
-        ) : (
-          <IoEyeOutline
-            className={classes.input_eye}
-            onClick={() => setActive(false)}
-          />
-        )}
-      </div>
         <Button variant="primary">
           Registration
         </Button>
