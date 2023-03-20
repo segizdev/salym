@@ -1,5 +1,7 @@
-import { useState, ChangeEvent, FormEvent, MouseEventHandler } from "react";
+import { useState, ChangeEvent, FormEvent, MouseEventHandler, useEffect, MouseEvent } from "react";
 import Link from "next/link";
+import jwt_decode from "jwt-decode"
+import Script from 'next/script'
 
 // @TODO Delete this packages later
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
@@ -13,10 +15,16 @@ type FormValues = {
   password?: string;
   email?: string;
 };
+type GoogleValues = {
+  name?: string;
+  picture?: string;
+  _id?: number
+};
 
 export const Login = () => {
   const [active, setActive] = useState<boolean>(false);
   const [inputs, setInputs] = useState<FormValues>({});
+  const [googleUser, setUser] = useState<GoogleValues>({})
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,7 +41,39 @@ export const Login = () => {
     setActive(!active)
   }
 
+  function handleCallbackResponse(response: any) {
+    console.log("Encoded JWT ID token: " + response.credential)
+     const userObject: any = jwt_decode(response.credential)
+     setUser(userObject)
+     const element = document.getElementById("signInDiv") as HTMLButtonElement
+     element.hidden = true
+  }
+
+   function handleSignOut(event: MouseEvent<HTMLButtonElement>) {
+     setUser({})
+     const element = document.getElementById("signInDiv") as HTMLButtonElement
+     element.hidden = false
+   }
+
+useEffect(() => {
+  /* global google */
+  window.google?.accounts.id.initialize({
+    client_id: "387501226115-1br36vrgtha4sl0enpe32374vv1u6mm3.apps.googleusercontent.com",
+    callback: handleCallbackResponse
+  })
+  const element = document.getElementById("signInDiv") as HTMLButtonElement
+  window.google?.accounts.id.renderButton(  
+    element,
+    {type: "standard", theme: "outline", size: "large" }
+  )
+   
+  window.google?.accounts.id.prompt()
+
+}, [])
+
   return (
+    <div>
+    <Script src="https://accounts.google.com/gsi/client" async defer />
     <form onSubmit={handleSubmit} className={classes.form}>
       <Input
         type="email"
@@ -61,16 +101,22 @@ export const Login = () => {
       </div>
       <div className={classes.social_account}>
         <span className={classes.social_account_title}>login with account</span>
-        <div>
-          <Link className={classes.social_account_google} href={to.landing}>
-            Google
-          </Link>
-        </div>
+        <div id="signInDiv" className={classes.google_signin}></div>
+        {googleUser && <div className={classes.google_content}>
+                <Link href={to.dashboard} className={classes.google_items}>
+                  <img className={classes.google_picture} src={googleUser.picture} />
+                  <span className={classes.google_user_name}>{googleUser.name}</span>
+                </Link>
+              { Object.keys(googleUser).length != 0 &&
+                <Button variant="primary" click={(e) => handleSignOut(e)}>Выйти с аккаунта</Button>
+              }
+            </div>}
       </div>
       <div>
         <span>No account ?</span>
         <Link href={to.register}>Registration</Link>
       </div>
     </form>
+    </div>
   );
 };
