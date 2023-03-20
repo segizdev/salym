@@ -22,7 +22,7 @@ export const LayoutAuth = ({ children }: Props) => {
                 <Logo />
               </Link>
             </NavigationMenu.Item>
-            <NavigationMenu.Item>
+            <NavigationMenu.Item className={classes.links}>
               <Link href={to.login}>
                 <Button variant="primary">Log in</Button>
               </Link>
@@ -30,7 +30,9 @@ export const LayoutAuth = ({ children }: Props) => {
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
-        <div className={classes.content}>{children}</div>
+        <div className={classes.content}>
+          {children}
+          </div>
       </div>
     </div>
   );

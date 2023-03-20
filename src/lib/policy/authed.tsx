@@ -22,6 +22,7 @@ function PolicyAuthedInner({ children }: Props) {
     } else {
       setIsReadyToRender(true);
     }
+
   }, [isAuthenticated, isProfileCurrentReady, router]);
 
   if (!isReadyToRender) return null;
